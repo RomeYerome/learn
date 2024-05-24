@@ -1,0 +1,19 @@
+/node_modules
+/build
+/react/feedback-app
+/react/github-finder
+/react/feedback-app/node_modules
+/react/feedback-app/.git
+/react/feedback-app/.git
+/react/github-finder/.gitignore
+/react/github-finder/.git
+/react/github-finder/node_modules
+/js-vanilla/randomideas-api
+
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

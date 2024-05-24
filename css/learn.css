@@ -1,0 +1,1153 @@
+/* IMPLEMENTING CSS */
+/* You can integrate CSS in different ways: 
+    INLINE CSS: using the style attribute directly on HTML elements, e.g: <h1 style="color: white">Heading One</h1>;
+    INTERNAL CSS: using the style tag in the head of the html page and writing your styles there
+<style>
+ Internal CSS goes within the style block in the head
+</style>
+
+    EXTERNAL CSS: writing your styles in a seperate css file and linking it using the link element
+    <link rel="stylesheet" href="css/FileLocation.css">
+
+    The external stylesheet is best practice because it seperates markup from style. Both the inline and internal CSS methods require you to edit every page or instance whenever you want to make a change, while the external stylesheet lets you edit centrally and it affects every instance of that selector in the entire website
+*/
+
+
+/* THE STRUCTURE OF A CSS BLOCK */
+/* selector { property: value;  } */
+a {
+    background-color: yellow;
+}
+
+
+/* 
+BASIC CSS SELECTORS
+
+Element Selectors
+eg: a, h1, p, div
+*/
+
+a {
+    padding: 1rem;
+}
+
+/*
+CLASS Selectors
+they are targeted with the dot '.' followed by the class name. The example below will select all elements with a class of .primaryHeading
+*/
+.primaryHeading {
+    color: blue;
+}
+
+/* ID Selectors
+they are targeted with the hash '#' followed by the ID name. The example below will select the element with an ID of .primaryHeading. Unlike classes. ID's are used once so this will select one element
+*/
+#primaryHeading {
+    color: blue;
+}
+
+
+/* MULTI Selectors
+selecting multiple targets is done by seperating them with commas. The example below will select all a tags,
+every element with a link class and the element with an ID of mainImage */
+
+a,
+.links,
+#mainImage {
+    border: 2px;
+}
+
+
+/* NESTED Selectors
+Selecting an element within another element is done by writing the containing element followed by a space then the element you want . Nested selectors help you specify only a certain element and not others like it. The example below will select only a link within an element with the class of primaryText
+*/
+
+.primaryText a {
+    color: red;
+}
+
+
+
+/* FONTS IN CSS 
+There are 2 ways to add fonts to a CSS file. 
+1. With the font-family: css property that gives you access to web safe font stacks
+2. By using @import url(); to link to online fonts from like google fonts or to a local font file you uploaded
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.4rem;
+}
+
+/* 
+FONT Size 
+The font-size property sets the size of the selected font. You can use fixed sizing - pixels or responsive/scalable sizing such as em, rem, %
+
+FONT Weight
+Defines the boldness of the text
+
+LINE HEIGHT
+Defines the height of the box each line of text occupies, The spacing between the lines
+
+LETTER-SPACING
+Defines the space between letters
+
+WORD-SPACING
+Defines space between words
+
+TEXT-INDENT
+Defines first line indent
+*/
+
+
+
+/* COLOR TYPES 
+1. Color Names i.e color:red;
+2. rgb i.e color: rgb(255,255,255);
+3. hex i.e color: #000000;
+*/
+
+.someText {
+    color: red;
+    color: rgb(255, 255, 255);
+    color: #000;
+}
+
+
+
+/* 
+BACKGROUNDS
+There are a couple ways to set background properties
+*/
+
+.someDiv {
+    background-color: #fff;
+    background: #333;
+    background-image: url('link-to-the-image');
+
+}
+
+/*
+other background properties related to background image are
+background-repeat: no-repeat;
+background-position: x y;       x y can be pixels like 100px 100px (pushing right and down) or -100px -100px (left and up) or keywords like center top
+
+background-size: cover;
+*/
+
+.someDiv {
+    background-repeat: no-repeat;
+    background-position: 100px -50px;
+    background-size: cover;
+}
+
+/*
+the background property can be used as shorthand for all this as shown below
+*/
+
+.someDiv {
+    background: url() no-repeat 100px -50px/cover;
+}
+
+/*
+lastly if you want the image fixed to a position while you scroll, you use the background attachment property
+
+background-attachment: fixed;
+*/
+.someDiv {
+    background: url() no-repeat -50px -100px/cover;
+    background-attachment: fixed;
+}
+
+
+
+
+
+/*
+BORDERS
+
+For borders, 3 properties are mandatory
+border-width: 3px;
+border-color: #333;
+border-style: solid;
+*/
+
+.someDiv {
+    border-width: 3px;
+    border-color: #333;
+    border-style: solid;
+}
+
+/*
+These 3 mandatory properties can be written in shorthand in any order with the 'border' property
+*/
+.someDiv {
+    border: red solid 1px;
+    border-top: blue;
+}
+
+/*
+There is also the border radius that helps round corners
+border-radius: 3px;
+*/
+.someDiv {
+    border-radius: 3px;
+}
+
+/*
+you can also isolate corners and sides with the border property
+*/
+.someDiv {
+    border-left: 1px dotted black;
+    border-top-left-radius: 3px;
+}
+
+
+
+/* 
+BOX MODEL, MARGIN, PADDING 
+
+Every HTML element has a bounding box that is controlled by certain css properties
+
+display: block or inline - determines if the elements box fills the width of the container
+width - determines the width of the element's box for block element. The width of inline elements are determined by its content
+
+
+Margin - determines the space surrounding the box of an element
+Padding - determines the space inside the box of an element
+Border - the bounding box around the element
+
+Content -  the content in an element determines the height (and width in the case of inline elements) of the box
+
+Box-Sizing: border-box OR content-box; - the Box-Sizing property determines if an element's box increases with padding
+
+
+MARGIN
+There are several ways of adding margin to an element
+
+Adding Margin to each side
+*/
+.someDiv {
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+/*
+Adding Margin to vertical and horizontal
+margin: x y; (1rem 1rem) this sets the  left and right margin to the 1st value, and the top and bottom to the 2nd value
+*/
+.someDiv {
+    margin: 1rem 1rem;
+}
+
+/*
+Adding Margin to top, horizontal and bottom
+margin: top horizontal bottom; (1rem 2rem 1rem) this sets margin top, horizontal and bottom
+*/
+.someDiv {
+    margin: 1rem 2rem 1rem;
+}
+
+/*
+the keyword 'auto' when used in horizontal margin with an element that has a width value will center the element in it's container
+
+
+PADDING
+The same options exist for padding as well
+
+*/
+
+
+
+/* 
+FLOAT & ALIGNMENT 
+
+Centering Content
+One way to center content is to wrap them in a container, give the container a max-width value and horizontal margin of auto
+*/
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+/*
+Aligning Text
+You do this with the text align property. You can align left, center, right or justify. You can set the text align on the text element (p, h) or you can put it on the containing element if you want to align every text in it
+*/
+.someText {
+    text-align: center;
+}
+
+/*
+Float
+The float property is outdated. It was used to align items before grid and flexbox. To float an item, you need to give it a property of float. This takes it out of the normal flow. 
+*/
+
+.box1 {
+    width: 68%;
+    float: left;
+}
+
+.box2 {
+    width: 30%;
+    float: right;
+}
+
+.clr {
+    clear: both;
+}
+
+/*
+Items that come after floated items go behind them because they don't recongnize the floated element so you need to put an element with a clear property immediately after your floated element to return normalcy
+
+*/
+
+
+
+
+/* 
+LINK STATE & BUTTON STYLING
+
+Links have different states that can be styled using pseudo selectors. some common ones are hover, active, visited
+*/
+
+a {
+    text-decoration: none;
+    color: #9ba36e;
+}
+
+a:hover {
+    font-size: 1.2rem;
+}
+
+/* 
+Buttons unlike links are not meant to take you anywhere as it doesn't have the href attribute, it also doesn't have the pointer cursor by default so you must add it if you want it. You can style a link to look like a button and vice-versa. you also have states for buttons
+*/
+
+button {
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    color: yellow;
+}
+
+
+
+
+/* 
+NAVIGATION MENU STYLING
+navigation is typically created with lists (ul). Side menu's are left vertical, while horizontal menu's were floated. 
+Setting the li elements to float will take them out of the natural flow and cause the containing ul to collapse since there is 'nothing' in it. To override this behaviour, you have to set overflow to auto
+*/
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #4c6ca0;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+li a:hover {
+    background: #446190;
+    color: #f4f4f4;
+}
+
+
+
+/* DISPLAY: INLINE, BLOCK & INLINE-BLOCK 
+
+The display property lets you set an element to display as a block level element, an inline element, an inline-block level element. The key differences between these are
+
+INLINE: elements don't take up the width of the container, so elements stack horizontally. You can't use width or vertical margin on inline elements as they are ignored
+
+BLOCK: elements take up the width of their container, so block elements stack vertically. You can use the width property or vertical margin with block level elements. A good example of when you want to change an inline element to block is when you want to center it using margin: auto; i.e like in the case of an image you want to center horizontally
+
+INLINE-BLOCK: this is the best of both worlds, elements stack horizontally and don't take up the width of the container, but you can use the width property or v margin on them
+
+*/
+
+
+
+
+/* POSITIONING
+
+
+STATIC: the default positioning for all elements. Not affected by top, bottom, left, right (tblr) properties/values.
+
+RELATIVE: elements remain in their natural position but will be changed by tblr properties/values. Surrounding elements are unaffected by any change to it's position and behave like it is still in its original place, respecting the space it left
+
+ABSOLUTE: elements are positioned relative to their nearest parent element that has a positioning of relative. Elements are affected by tblr. Absolute elements are also taken out of the natural flow so surrounding elements are affected by positional changes to absolute elements and act like the element doesn't exist, filling up the space it left
+
+FIXED: elements are positioned relative to the viewport. They are affected by tblr
+
+STICKY: elements are positioned based on scroll position. 
+
+TBLR: The top bottom left right properties mean distance from. So if you set top to 50px, the element is pushed 50px from the top of it's container. If you set a bottom: 50px; the element is first moved to the bottom of it's container then pushed up 50px. If you set left and right to auto. the element is centered.
+
+Z-INDEX: Because TBLR lets you move items around, you'll have items overlapping. Naturally these items are stacked according the the latest content. So if div 2 comes after div 1 in the document, in the case of an overlap in positions, div 2 will appear in front of div 1. You can change this order with the Z-Index property. All elements have a z-index of 0 by default, if you set any elements z-index to a positive number, it'll move above every element with a lower z-index. To move items back you can set them to negative values or to a value less than the element you want it behind
+
+
+POSITIONING isn't used as much anymore because it is not mobile friendly.
+*/
+
+
+
+
+
+/* VISIBILITY, ORDER & NEGATIVE MARGIN
+
+Sometimes you may want to hide content on a page for any number of reasons. There are 2 ways to achieve this
+*/
+
+.someDiv {
+    display: none;
+    visibility: hidden;
+}
+
+/* display:none; hides the element and also removes it from the document flow. visibility:hidden; hides the element without removing it from the document flow  */
+
+
+
+
+/* ORDER & SPECIFICITY
+if you have two or more style rules targeting the same element, the latter rule will override the former if they both have the same specificity. 
+
+Specificity in CSS is a system that determines which rule should take precedence. CSS rules written as inline style attributes have the highest score of 1000s, next up is style rules targeting IDs which score 100s, then classes which score 10s, then element rules which score 1s. 
+
+If you want to make sure a particular rule takes precedence beyond any other regardless of order or specificity, you can use the !Important flag
+
+*/
+
+.someDiv {
+    /* a class gets a specificity score of 10 */
+    background-color: red !important;
+}
+
+div {
+    /* an element gets a specificity score of 1 */
+    background-color: blue;
+}
+
+
+/* Here the div styles come after the class styles so by virtue of order, the div styles should overwrite the class styles but the class has a higher specificity so it takes priority. We can alter this by using the !important flag on the div
+  */
+
+
+
+
+/* RESPONSIVE DESIGN
+This is designing for different mediums and screen sizes. A fluid design if you will. Some key elements of responsive design are
+
+1. Set the viewport/scale
+2. Use fluid widths (max-width/min-width) instead of fixed width
+3. Media queries: different CSS styling for different screens
+4. Rem units over px
+5. mobile first design
+
+*/
+
+
+
+/* MEDIA QUERIES
+Media queries let you define different styles for different screen size based on width, height, screen or print. You define a media query as follows
+*/
+
+@media screen and (max-width: 500px) {
+    body {
+        background: red;
+    }
+}
+
+@media (min-width: 1000px),
+(orientation: landscape) {
+    body {
+        background: blue;
+    }
+}
+
+/* You can add your media query styles to your main stylesheet or you can create a seperate stylesheet... say mobile.css and link it into your document with a condition as follows
+
+<link rel="stylesheet" media="screen and (max-width: 500px)" href="mobile.css">
+
+By adding that media condition, the stylesheet only loads when the screen size meets the condition
+*/
+
+
+/* EM & REM UNITS
+Em units are relative to the pixel font-size of it's parent element. Ems are confusing - if you write a style for paragraphs set to 1.5ems every paragraph will have font sizes of 1.5em. however, if you nest a paragraph in another, the nested paragraph now has a size of 1.5 x 1.5em. IGNORE EM 
+
+REM on the other hand is relative to the root element (html) which by default is 16px. You can change the root default and all rem measurements will be based on this new setting
+*/
+.someDiv {
+    height: 5rem;
+}
+
+
+/* VH & VW UNITS
+View Port Height and View Port Width are responsive units that represent the size of the view port going from 1 to 100. They are great for landing pages or any design you want to scale to the size of the viewport.
+*/
+
+.someDiv {
+    height: 100vh;
+}
+
+
+
+/* FLEXBOX
+
+Flexbox is a modern layout feature in CSS3. You turn it on by setting the display property of a parent/container element to flex. It replaces the float property and is more elegant to work with. It lets you align items vertically (columns) and horizontally (rows). Child elements are called flex items and can be reordered with CSS
+*/
+
+.someDiv {
+    display: flex;
+}
+
+/* 
+When you set a container's display to flex, it automatically arranges every child item side by side like inline items. Flex has the following properties to align content
+
+Justify-Content: align along the main axis (HORIZONTAL by default, unless the flex-direction property is set to column)
+
+Align-Items: align along the cross axis (VERTICAL by default unless the flex-direction property is set to column)
+
+Align-Content: aligns multiline content (when items wrap) on cross axis
+*/
+
+.someDiv {
+    display: flex;
+    flex-direction: column;
+    /* this forces every child element to stack up vertically instead of the default 'row' which lines up horizontally. It changes the main axis to vertical and the cross to horizontal */
+    flex-wrap: wrap;
+    /* Default is nowrap which causes flex items to shrink (regardless of if you set widths for them) with screen size but when set to wrap, flex items wrap as the screen gets smaller */
+}
+
+
+
+
+/* FLEX GROW | FLEX SHRINK | FLEX BASIS | FLEX
+
+These 3 properties deal with the responsiveness/sizing of child elements
+
+FLEX GROW: When the total size (width or height) of flex items is less than the main size of the container (width in the case of flex direction being row, height in the case of column), the flex grow property determines how much of the remaining space each flex item takes up. The default value is 0 which is no growth.
+
+FLEX SHRINK: when the total width of flex items combined is larger than the container, items shrink according to the shrink factor. The value of the flex shrink property ranges from 0 (no shrink), 1 (normal shrink), 2 (twice as much) to infinity. This property is set on the flex items not the parent
+
+FLEX BASIS: This sets the initial main size (width in the case of flex-direction row or height in case of column) of the flex item. The default value is auto which is determined by the size of the content.
+*/
+
+.flexItem {
+    flex-grow: 0;
+    /* #defaultValue - Item will not grow to fill up remaining space in container */
+    flex-grow: 1;
+    /* Item will grow to fill up remaining space in container if it's the only one set to 1 or grow in proportion*/
+    flex-grow: 2;
+    /* Item will grow to twice the size of flex items with flex-grow 1 or take up all space if it's the only child with flex-grow set */
+
+    flex-shrink: 0;
+    /* item will not shrink */
+    flex-shrink: 1;
+    /* #defaultValue  - item will shrink at the default rate */
+    flex-shrink: 9;
+    /* item will shrink  9 times as fast/much as an item with shrink set to 1*/
+
+    flex-basis: auto;
+    /* #defaultValue - sets the initial size of flex item to size of content */
+    flex-basis: 500px;
+    /* sets the initial size of flex item to the specified size */
+
+}
+
+
+/* FLEX: is a short hand way of writing flex-grow, flex-shrink and flex-basis. It takes 1 to 3 values in that order */
+
+.flexItem {
+    flex: 1 0 300px;
+    /* the 3 values represent grow, shrink, basis */
+}
+
+
+
+/* FLEX ALIGN & JUSTIFY
+
+JUSTIFY CONTENT: This property is applied to the parent/containing element and aligns items along the MAIN AXIS which is the horizontal axis when the flex direction is set to its default (row). It's possible values are: flex-start (top or left),
+center, flex-end (bottom or right), stretch (stretches across the entire width or height of the container
+
+
+ALIGN ITEMS: The align items property is applied to the parent/containing element and aligns items along the CROSS AXIS which is the vertical axis when the flex direction is set to its default (row). It has 4 possible values: flex-start (top or left), center, flex-end (bottom or right), stretch (stretches across the entire width or height of the container
+
+
+
+*/
+
+.someDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    /* items are packed to the beginning edge of the container along main axis */
+    justify-content: end;
+    /* items are packed to the end edge of the container along the main axis */
+    justify-content: flex-start;
+    /* items are packed to the beginning edge of the container along the main axis */
+    justify-content: flex-end;
+    /* items are packed to the end edge of the container along the main axis */
+    justify-content: center;
+    /* items are packed flush to each other at the center of the container along the main axis */
+    justify-content: left;
+    /* items are packed flush to each other at the left edge of the container along the main axis */
+    justify-content: right;
+    /* items are packed flush to each other at the right edge of the container along the main axis */
+    justify-content: normal;
+    /* items are kept in their default postion like no justify-content was applied */
+    justify-content: space-between;
+    /* sets the outermost objects at each edge and distributes the space between all others evenly along the main axis*/
+    justify-content: space-around;
+    /* spaces all items evenly with each item having the same space on it's left and right including the edge items */
+    justify-content: space-evenly;
+}
+
+/* ALIGN-SELF: applied to the flex item itself, this property is used to align individual child/flex-items */
+
+
+
+
+/* ADVANCED SELECTORS, ANIMATIONS & MORE 
+
+
+TARGETED SELECTORS
+
+Child Elements 
+This selects as shown in the example below, selects all paragraphs that are children or grandchildren of divs. it doesn't matter if the element has other parents, as long as it is somewhere in a div it gets selected
+*/
+
+div p {
+    color: #000;
+}
+
+/* Direct Child Selection 
+To select only direct (first level children) of elements, you use the greater than sign > as shown below
+*/
+
+div>p {
+    color: #000;
+}
+
+/* Next (Directly After) Element Selection 
+To select the element directly after another, you use the + sign as shown below. This will select only paragraphs immediatly after a div
+*/
+
+div+p {
+    color: #000;
+}
+
+/* Selecting Elements by Attribute 
+To select an element or elements by their attributes, you use square brackets to wrap the attribute as shown below. This will select only links that have the target attribute. You can also specify the value of the attribute if you want a specific element as shown in example 2
+*/
+
+a[target] {
+    color: red;
+}
+
+input[type="text"] {
+    color: green;
+}
+
+
+
+/* NTH CHILD SELECTORS
+Here's how to select an element that is the 1st, last or nth child of another element. The examples below assume you have a list with 10 list items
+*/
+
+/* First Child */
+li:first-child {
+    color: blue;
+}
+
+/* Last Child */
+li:last-child {
+    color: black;
+}
+
+/* 9th child */
+li:nth-child(9) {
+    color: rebeccapurple;
+}
+
+/* Every 3rd Child 
+For more complex selections like this, the 3n + 0  says count every 3rd child starting from 0 (0 is the offset) if you want it to start from 5 then your formula will be 3n + 5
+*/
+li:nth-child(3n+0) {
+    background-color: orange;
+}
+
+/* Every 3rd Child Starting from 5  */
+li:nth-child(3n+5) {
+    background-color: blue;
+}
+
+
+/* Even and Odd Children */
+li:nth-child(even) {
+    background-color: grey;
+}
+
+li:nth-child(odd) {
+    background-color: lightgrey;
+}
+
+
+
+
+/* BEFORE & AFTER PSEUDO ELEMENTS 
+    The before and after pseudo elements are used to create a first and last child of the selected element and add content to it using the content attribute. By default their content is inline. The example below will add a red asterisk before the text of an element with the class is-required
+*/
+
+.is-required::before {
+    content: '*';
+    color: red;
+}
+
+span[data-descr]:hover::after,
+span[data-descr]:focus::after {
+    content: attr(data-descr);
+}
+
+/* One way to use it is for overlays for showcase images */
+
+.showcase::before {
+    content: '';
+    background: url() no-repeat center center/cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+
+
+
+
+
+
+/* BOX SHADOWS 
+
+The box shadow property adds shadow effects around an elements frame. If the frame is rounded with the border-radius property then the shadow is also rounded. There are 6 different parameters for the box-shadow property and some are optional 
+
+[inset] | x-offset | y-offset | [blur-radius] | [spread-radius] | color
+
+inset: a keyword that reverses the default behaviour and puts the drop shadow inside the box instead of outside
+
+x-offset: the distance of the shadow to the left or right of the element's edge. Positive numbers push right and negative numbers push left
+
+y-offset: the distance of the shadow up or down from the element's edge. Positive numbers push down and negative numbers push up
+
+blur-radius: the bigger the value, the bigger the blur. positive values only
+
+spread-radius: positive values expand the shadow, negative values shrink them
+
+color: sets the color of the shadow, if not specified it defaults to the current color
+*/
+
+.someDiv {
+    /* x-offset | y-offset | color */
+    box-shadow: 10px 10px red;
+
+    /* x-offset | y-offset | blur-radius | color */
+    box-shadow: -10px -5px 8px blue;
+
+    /* [inset] | x-offset | y-offset | [blur-radius] | [spread-radius] | color */
+    box-shadow: inset -6px 5px 3px 1rem blue, 3px 5px 10px orange;
+}
+
+
+
+/* TEXT SHADOWS 
+
+The text shadow is similar to the box shadow only it adds the shadow to the outline of the text. It uses the same offset model as box shadows
+
+/* h-shadow | v-shadow | blur-radius | color */
+
+
+
+
+/* CSS VARIABLES
+They work like variables in every programming language, you declare them with two hyphens --variable-name inside a style block. CSS variables have scope so if you declare it in one block you can't use it in another. For variable scope, it's best you declare it at the root as shown below.
+*/
+
+/* local scope */
+.someDiv {
+    --primary-color: #ffe3a1;
+    background: var(--primary-color);
+}
+
+/* global scope */
+:root {
+    --primary-font: "Arial";
+}
+
+body {
+    font-family: var(--primary-font), sans-serif;
+}
+
+/* Variables give you a way to quickly change the theme of a website */
+
+
+
+
+
+/* KEYFRAMES ANIMATION
+You can animate CSS properties that have inbetween states such as width, height, opacity using the animation property
+*/
+
+.someDiv {
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    animation-name: animate1;
+    animation-duration: 2s;
+    animation-iteration-count: 2;
+    animation-fill-mode: forwards;
+    animation-direction: alternate-reverse;
+    animation-delay: 2s;
+    animation-timing-function: ease-in;
+
+    /* animation-name | duration | timing-function | delay | iteration-count | direction | fill-mode | play-state */
+    animation: slideIn 2s ease-in-out 2s 2 reverse forwards paused;
+}
+
+@keyframes animate1 {
+    from {
+        width: 200px;
+    }
+
+    to {
+        width: 600px;
+    }
+}
+
+
+/* To play the animation you use the @keyframes keyword as shown above. You can animate using from & to OR using percentages which will work with the duration */
+
+
+
+/* TRANSITIONS
+Just like animations but specifically for events like hover or click. It has similar properties to animation as seen below
+*/
+
+.someDiv {
+    background-color: red;
+
+    transition-property: background, border-radius;
+    /* You can specify a comma seperated list of properties you want to transition or all*/
+    transition-duration: 3s;
+    transition-timing-function: ease-in;
+    transition-delay: 1s;
+    /* transition-property | duration | timing function | delay */
+    transition: all 3s ease-in-out 1s;
+}
+
+.someDiv:hover {
+    border-radius: 50%;
+    background-color: blue;
+}
+
+
+
+
+/* TRANSFORM 
+the transform property lets you rotate, skew, scale or translate(move) an element. 
+*/
+
+.someDiv {
+    transform: rotate(25deg) skew(30deg) scale(2, 3) translate(20px 50px);
+}
+
+
+
+
+
+
+/* CSS GRID 
+The grid display property is a grid layout system for CSS. It's similar to flexbox but more powerful. It's a 2D layout system meaning it can have rows and columns not just a column or a row like flex. (flex is 1 dimentional) and uses align items and justify content also.
+
+
+display:grid;   creates a grid. All direct children are grid items (similar to flex). 
+
+grid-template-columns:      determines the number and width of columns
+
+gap: used to add gutter/margin between the columns and rows
+
+column-gap: for adding a gutter/margin between columns
+
+row-gap: for adding a gutter/margin between rows
+
+grid-template-rows: used to determine the number and height of rows. can be used in conjunction with grid-template-columns to make a 2d layout
+
+use css grid for outer elements and grid like layouts, use flex for simple alignments like inner elements e.g. a navbar
+*/
+
+.someDiv {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    /* this sets 3 columns of 200px width each and every child item aligns to it*/
+    grid-template-columns: 200px auto 200px;
+    /* auto sets a flexible column that fills up all remaining space*/
+    grid-template-columns: auto auto auto;
+    /* auto sets a flexible column that fills up all remaining space*/
+    grid-template-columns: repeat(3, auto);
+    /* in place of repeating the same unit over and over, you can use the repeat function*/
+    grid-template-columns: 1fr 2fr 1fr;
+    /* fr (fraction) is the most common measurement used with grids. */
+
+    gap: 1rem 2rem;
+    /* shorthand property for row gap column gap */
+    gap: 1rem;
+
+    row-gap: 1rem;
+
+    column-gap: 2rem;
+
+    grid-template-rows: 1fr 2fr 3fr;
+    /* any child that doesn't have a designation is unchanged. you can set a default for all unassigned rows using grid-auto-rows */
+
+    grid-auto-rows: 2fr;
+    /* will set all unassigned rows to 2fr height */
+
+}
+
+
+/* GRID: Spanning Rows and Columns
+
+You can make a grid item span across rows and columns as you see fit as shown below
+
+*/
+
+.gridItems:nth-child(9) {
+    grid-column-start: 9;
+    /* Specifies the start of the column*/
+    grid-column-end: 14;
+    /* Specifies the end of the column*/
+
+    grid-row-start: 9;
+    /* Specifies the start of the row*/
+    grid-row-end: 12;
+    /* Specifies the end of the row*/
+}
+
+.gridItems:nth-child(9) {
+    grid-column: 9 / span 3;
+    /* shorthand for grid column start and end, tells it where to start and how many columns to span*/
+    grid-row: 9 / span 3;
+    /* shorthand for grid row start and end, tells it where to start and how many rows to span*/
+
+}
+
+
+
+
+/* GRID: Auto-fit & MinMax 
+
+One responsive way to define columns is using MINMAX in conjunction with Auto-fit as shown below
+*/
+
+.someDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* this sets the columns to 1fr and keeps them from going below 300px. good for photo galleries*/
+}
+
+
+/* GRID: Template Areas 
+
+Grid template areas are used to map out layouts with names and assign elements to those names
+
+*/
+
+.container {
+    display: grid;
+    grid-template-areas: 'header header header'
+        'showcase showcase showcase'
+        'main main sidebar'
+        'icons icons icons'
+        'footer footer footer';
+    gap: 1rem;
+}
+
+.header {
+    grid-area: header;
+}
+
+.headerImage {
+    grid-area: showcase;
+}
+
+.content {
+    grid-area: main;
+}
+
+
+
+
+
+
+
+
+/* SASS: SYNTACTICALLY AWESOME STYLESHEETS 
+
+SASS is a CSS prepropessor. It enhances the functionality of CSS and it's files are compiled to CSS files. There are many SASS compilers one of which is Node SASS
+
+SASS offers
+1. Variables
+2. Conditionals
+3. Nesting
+4. Inheritance
+5. Partials/Imports
+6. Operators & Calculations
+7. Functions & Mixins
+8. Color Functions
+
+
+TWO WAYS TO USE SASS
+
+    Option One
+    1. Install Dart Sass using the npm package: "npm i node-sass"
+
+    2. In the package.json file, edit the scripts line and add 
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive"
+
+    3. Then in your cli, type "npm run sass"
+
+
+    Option Two
+    Use the live sass compiler vscode extension
+
+
+
+VARIABLES 
+    sass variables are simpler than css variables and are created using the $. 
+    e.g:  $primary-color: #f34822;
+
+    body {
+            background-color: $primary-color;
+    }
+
+
+PARTIALS
+    partials let you create seperate sass files by prefixing them with _ e.g _variables.scss or _mobile.scss and importing them into your main sass file.
+
+To import partials into your main sass file, use the @import function with the name of the partial file (without the _ or the .scss extension) as shown below
+
+@import "variables";
+
+
+
+
+
+NESTING AND STRUCTURE
+sass lets you nest styles similar to how you write html. this gives it more structure as shown below
+
+.section-a {
+    color: black;
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    &:nth-child(3) {
+        display: none;
+    }
+}
+
+The ampersand symbol is a placeholder for the parent. In the example above it means section-a:nth-child(3)
+
+
+
+
+INHERITANCE
+You can create generic styles for say buttons and extend those styles into individual buttons as follows
+
+%btn {
+    display: inline-block;
+    border: none;
+    padding: 0.7rem 2rem;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+
+.btn-light {
+    @extend %btn;
+    background: blue;
+}
+
+
+
+
+FUNCTIONS, MIXINS & MORE
+SaSS gives you the ability to write functions using the @function syntax shown below. Here's a popular sass function to dynamically regulate text color based on background color
+
+@function set-text-color($bg-color) {
+    @if(lightness($bg-color) > 50) {
+        @return #000;
+    }
+
+    @else {
+        @return #fff;
+    }
+}
+
+After creating a function like the one above, you can use it in your sass as follows
+
+body {
+    color: set-text-color($bg-color);
+}
+
+
+
+
+
+Mixins on the other hand help you not repeat your self. you can write a group of styles and give it a name, then you can include it into any elements style by calling it with  @include 
+
+@mixin transform($property) {
+    --webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+}
+
+
+
+LIGHTEN & DARKEN
+.btn:hover {
+    @include transform (rotate(20deg));
+    background-color: lighten($darkColor, 10%);
+}
+
+*/

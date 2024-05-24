@@ -1,0 +1,340 @@
+<!-- DOCTYPE & BASIC LAYOUT -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- The head is used for meta tags (tags that hold metadata: description and settings for the website) and the title tag. They don't display on the page-->
+
+    <!-- META TAGS & SEARCH ENGINES -->
+
+    <meta charset="UTF-8">
+    <!-- used to set the charset. The default is UTF-8. If you omit this line it'll still be set to UTF-8 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- tells internet explorer to use the edge standard. It's not very important-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- IMPORTANT for responsive design. Sets the content to fit the viewport of any device it is viewed on -->
+
+    <meta name="description"
+        content="This tag holds the description of what the webpage is about. It shows up in search engines and is important for SEO">
+
+    <meta name="keywords"
+        content="The keywords is best used to hold a comma seperated list of 8 to 12 keywords that you want your site associated with during searches. It was HUGE for SEO before, now not so much">
+
+    <meta name="robots" content="NOINDEX, NOFOLLOW">
+    <!-- If you don't want your site showing up on search engines, the robots meta tag is how you tell search engines not to index your site or any links from it -->
+
+    <title>Learn HTML</title>
+    <!-- The title is very important to search engines and humans. It describes the page. It shows up on search engines as the title of the website -->
+</head>
+
+<body>
+    <!-- This is the format for a comment -->
+    <!-- Command + Alt + U opens the html source code of a website -->
+    HTML elements have a format of wrapping content in opening and closing tags
+    <p> for example this paragraph wrapped in p tags</p>
+
+    Some unique elements don't have closing tags (this is a remnant of XHTML) and they are tags that don't wrap any
+    content
+    like the <br> tag which can also be written in the old xhtml way <br />
+
+
+
+    <!-- HEADINGS PARAGRAPHS & TYPOGRAPHY -->
+
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
+
+    <!-- Headings are hierarchical and significant to search engines with the h1 being the most significant. As a tip, have one h1 per page and it should hold the main title -->
+
+    <!-- PARAGRAPHS -->
+
+    <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. <strong>Magni repudiandae magnam sed laudantium
+            dignissimos</strong>. Inventore consequatur quidem cumque <del>sed numquam expedita corrupti est
+            voluptatem</del>
+        ratione recusandae, quam esse facilis, architecto, odio neque voluptas? <em>Expedita sequi obcaecati magnam
+            repellendus molestias laudantium a eius</em>, incidunt placeat dolor dignissimos asperiores voluptas
+        aspernatur cum nihil sed. <br><br>
+
+        Vero, dolorem culpa.
+
+        <hr> Molestias hic eveniet exercitationem ea nam cupiditate
+        dolorem
+        eaque officia doloremque possimus repellendus facere labore perferendis tempore commodi, natus optio ex
+        veritatis corrupti maiores aut.
+    </P>
+
+    <!-- The paragraph tag <p> is the default tag for text bodies. The <strong> tag highlights text with strong importance and displays as bold. The <em> tag marks text that has stress emphasis. The <del> tag marks text that is deleted. The <br> tag puts a line break in a body of text while the <hr> tag puts a horizontal line -->
+
+    <!-- None semantic tags like <u> <b> <i> have been deprecated -->
+
+
+
+
+
+    <!-- LINKS IMAGES & ATTRIBUTES -->
+
+    <!-- External Links -->
+    <p>
+        <a href="https://google.com" target="_blank">Click For Google</a>
+    </p>
+
+    <!-- the href attribute specifies where you're linking to. the target attribute specifies if you want the page to open over the current page or on a blank page. The default is self -->
+
+    <!-- Internal Links -->
+    <p>
+        <a href="/sandbox/index.html">Click For Index</a>
+    </p>
+
+    <!-- Internal links link to pages in your website folder -->
+
+
+
+
+    <!-- Images -->
+
+    <!-- Local Image -->
+
+    <img src="/sandbox/iphone.png" alt="My Image" width="100px">
+
+    <!-- External Image -->
+    <img src="https://a.espncdn.com/combiner/i?img=%2Fredesign%2Fassets%2Fimg%2Ficons%2FESPN%2Dicon%2Dsoccer.png&w=80&h=80&scale=crop&cquality=40&location=origin"
+        alt="External Image">
+
+
+
+
+
+    <h2>LISTS & TABLES</h2>
+    <p>There are 3 different types of lists in HTML</p>
+
+    <h3>Unordered Lists</h3>
+    <p>These are non sequential lists with bullet points (default) or squares or none as shown below</p>
+    <ul style="list-style:square;">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+    </ul>
+
+    <h3>Ordered Lists</h3>
+    <ol type="i">
+        <!-- The type attribute is used to change the styling from numeric to alphabets or roman numerals -->
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ol>
+
+    <h3>Nested Lists</h3>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2
+            <ul>
+                <li>Nested Item 1</li>
+                <li>Nested Item 2</li>
+            </ul>
+        </li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ul>
+
+
+    <h2>TABLES</h2>
+    <p>Tables are used to display table data. they are created with the
+        table element. They have columns and rows which make up the body and optional headers and footers </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>jdoe@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Jane</td>
+                <td>Doe</td>
+                <td>janedoe@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Kate</td>
+                <td>Smith</td>
+                <td>ksmith@gmail.com</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>&copy; RyderLounge Ltd</td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+
+    <h2>FORMS & INPUT</h2>
+
+    <P>The html form element is used for displaying form and form inputs. There are different input types to cater to
+        your specific needs </P>
+
+    <form action="process.php">
+        <div>
+            <label for="name">Name</label><br>
+            <input type="text" id="name" name="name" value="John Doe">
+            <!-- The value attribute sets the default value-->
+        </div>
+        <div>
+            <label for="email">Email</label><br>
+            <input type="email" name="email" id="email" placeholder="johndoe@gmail.com">
+            <!-- the placeholder attribute adds placeholder text-->
+        </div>
+        <div>
+            <label for="message">Message</label><br>
+            <textarea name="message" id="message" cols="50" rows="10"></textarea>
+        </div>
+        <div>
+            <label for="sex">Sex</label>
+            <select name="sex" id="sex">
+                <option value="male">Male</option>
+                <option value="female" selected>Female</option> <!-- selected makes that option the default-->
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div>
+            <label for="age">Age</label><br>
+            <input type="number" min="18" name="age" id="age">
+            <!-- the min/max attribute is used to set min and max values-->
+        </div>
+        <div>
+            <label for="birthdate">Birth date</label><br>
+            <input type="date" name="birthdate" id="birthdate">
+        </div>
+        <div>
+            <label for="membership">Membership</label><br>
+            <input type="radio" name="membership" id="membership" value="simple">Simple <br>
+            <input type="radio" name="membership" id="membership" value="standard">Standard <br>
+            <input type="radio" name="membership" id="membership" value="super" checked>Super <br>
+            <!-- The checked attribute checks an option -->
+        </div>
+        <div>
+            <label for="hobbies">Hobbies</label><br>
+            <input type="checkbox" name="hobbies" id="hobbies" value="swimming">Swimming <br>
+            <input type="checkbox" name="hobbies" id="hobbies" value="dancing">Dancing <br>
+            <input type="checkbox" name="hobbies" id="hobbies" value="movies" checked>Movies <br>
+            <!-- The checked attribute checks an option -->
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+
+
+    <h2>BLOCK LEVEL VS INLINE ELEMENTS</h2>
+    <p>Block level elements occupy the width of the container, forcing any following elements to the next line. Examples
+        of inline elements are divs, paragraphs, list items etc</p>
+
+    <p>Inline elements occupy the width of the element and new elements are added on the same line and to the right of
+        it. E.G span, image, links. You can't use the width property on inline elements</p>
+
+
+    <h2>DIV vs SPAN, CLASS vs ID</h2>
+    <p>Div and Span are html division elements, the difference is divs are block level divisions while spans are inline
+        divisions</p>
+    <p>Classes and IDs are styling attributes used with CSS. The main difference is that IDs can also be used for
+        in-page navigation, hence they should be used only once per page. </p>
+
+
+    <h2>HTML ENTITIES</h2>
+    <p>HTML Entities are used to represent special characters like &copy; or &gt;. There's a whole list of them</p>
+
+
+
+    <h2>HTML 5 SEMANTIC TAGS</h2>
+    <p>Before html 5 we basically had divs for sectioning. HTML 5 introduced more meaningful tags that are good for
+        sectioning but also give meaning to the blocks of code and are great for SEO as well. These tags include <br>
+
+        &lt;header&gt; : defines header for a document or section. The main header contains intro elements like logos,
+        nav... pages can have multiple headers, but not in footers, headers or address <br>
+        &lt;section&gt; : a section groups similarly themed content typically with a heading <br>
+        &lt;article&gt; : the article is for stand alone content that can be distributed by itself <br>
+        &lt;aside&gt; : the aside element defines some content aside from the content it is placed in (like a sidebar).
+        The content should be indirectly related to the surrounding content <br>
+        &lt;footer&gt; : the footer element defines a footer for a document or section <br>
+        &lt;nav&gt; : the nav element is intended for major blocks of navigation links <br>
+        &lt;figure&gt; : the figure tag specifies self-contained content, like illustrations, diagrams, photos, code
+        listings etc. <br>
+        &lt;figcaption&gt; : defines a caption for a figure element. it is placed as the first or last child of a figure
+        element <br>
+        &lt;main&gt; : specifies the main content of a document <br>
+        &lt;time&gt; : defines a date/time <br>
+        &lt;details&gt; : defines additional details that you can show or hide <br>
+        &lt;summary&gt; : defines a visible heading for a details element <br>
+        &lt;mark&gt; : defines marked/highlighted text <br>
+    </p>
+
+
+
+
+    <!-- CONTINUED LEARNING -->
+
+    <p contenteditable="true">The content of this paragraph is editable on the browser</p>
+    <!-- the contenteditable attribute makes the content of the element editable on the browser by the user -->
+
+    <a href="rome.io/mystory.pdf" download="preferred filename">Download my story</a>
+    <!-- the download attribute lets you download the file when you click on the link. if you add a value to the attribute, the value becomes the name of the file when you save it  -->
+
+    <!-- TOOLTIP -->
+    <p title="this is a tooltip">hover over me to see my tooltip</p>
+    <!-- the value of the title attribute shows up as a tooltip when you hover over the content of the paragraph -->
+
+
+
+
+
+
+
+    <!-- VS CODE TIPS -->
+    NAVIGATION
+    <!-- Command + Enter to move to a new line from the middle of a line -->
+    <!-- alt plus left/right to scrub over words of text instead of letters -->
+    <!-- alt plus up/down to move a line up or down -->
+    <!-- Command + down/up will take you to the bottom/top of the page -->
+
+    SELECTION
+    <!-- when you select something like a class name, pressing Command + D continously will select other instances of that classname so you can change them at once... pressing escape-->
+    <!-- hold Alt + Shift and click across multiple values for a multi cursor (highlight multiple items so you can edit all) -->
+
+
+    CREATION
+    <!-- Shift + Alt + Down to copy a line to a new line -->
+    <!-- ! + Tab/Enter to create a html boiler plate -->
+    <!-- command + / creates a new comment -->
+    <!-- you can create multiples of an element by writing 'element*n' EG. li*4 will give you 4 list items -->
+
+    CLASS & ID
+    <!-- creating a tag with a class or id is as easy as writing p#about for <p id="about"> </p> -->
+    <!-- you can create an element with both classes and an ID by writing p.box#box1 for <p id="box1" class="box">content</p> -->
+
+    <!-- Tab will shift selected line or lines by 4 spaces (if 4 is chosen), Shift + Tab will shift them backwards -->
+
+
+
+
+
+    <!-- alt + command + i will open up dev tools on google chrome browser -->
+
+</body>
+
+</html>

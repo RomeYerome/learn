@@ -1,0 +1,954 @@
+`WHAT IS REACT?
+React is a JavaScript library used for building UI in an organized way with reusable components. It is used to build single page applications (S.P.As)
+
+A Component such as a search bar can include its output/html (JSX), the logic (JS) and the styling (CSS). This is different from usual programming where the HTML, CSS and JS are seperate.
+
+It is often called a framework but it isn't as it is missing a router and a http client. However there are packages like react router DOM and the fetch API that extend it's capabilities and make it practically a framework
+
+
+
+WHY LEARN REACT?
+1. Organization: instead of broad distinctions like HTML, CSS and JS, React breaks code into components like search bar, header, navigation etc
+2. Reusable: These components are easily reusable in other projects
+3. Flexible: React can be used in parts of your project or all of it. Can be used with mobile dev using React native
+4. Popularity & Support
+5. Performance: React is fast and performs well. It uses something called the virtual DOM
+
+
+
+REACT IS VERY DECLARATIVE
+We write the code we want and react is in charge of taking that and performing all the JS & DOM steps we need.
+
+COMPONENTS: the tags in a react script are components e.g header, search bar, footer etc
+PROPS: these are arguments or attributes passed to a component
+STATE: is data, you have component state e.g open & close for a navigation, OR app level state
+EVENTS: similar to events in JS
+
+
+
+ENVIRONMENT SET UP
+The things you need for react dev are
+
+1. Node JS
+2. Code Editor: VS Code
+3. Version Control: Git
+4. React Developer Tools (Browser Extension)
+5. PostMan for http requests
+
+
+
+HOW DOES REACT WORK?
+React creates a virtual DOM in memory, instead of manipulating the browser's DOM directly, react does all it's manipulations in the virtual DOM before changing only what needs to be changed in the browser DOM
+
+
+
+
+GETTING STARTED
+To use react in production, you need node.js and npm. 
+
+SET UP A REACT ENVIRONMENT: create a react app by running the following code on your cmd line from within the right folder
+
+    
+    npx create-react-app <app name> [--use-npm]
+
+
+This creates the app and gives you options like 
+
+    npm start
+        Starts the development server.
+
+    npm run build
+        Bundles the app into static files for production.
+
+    npm test
+        Starts the test runner.
+
+    npm run eject
+        Removes this tool and copies build dependencies, configuration files
+        and scripts into the app directory. If you do this, you can’t go back!
+
+
+
+RUN THE REACT APP: We suggest that you begin by typing in cmd terminal:
+
+    cd <app-name>
+    npm start
+
+
+
+
+INITIALIZING REACT
+Now that you have the react environment set up, you can delete every thing in the src folder and create your own index.js, App.js, index.css etc. 
+
+Take your index.js file and initialize react by writing the following code at the top of it
+
+
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+Next, import the App component into your index.js file. The App component is your main component that goes into the root div. 
+
+    import App from ./App
+
+    const rootEl = document.getElementById('root);
+
+    const root = ReactDOM.createRoot(rootEl);
+
+    root.render(components/html)
+
+
+
+REACT RENDER
+React's goal in many ways is to render HTML in a web page. It does this using the createRoot() function/object and it's render() method
+
+createRoot(<html-element>) : createRoot takes an html element. It's purpose is to identify the html element where a react component should be displayed
+
+<rootElement>.render(<html || react component>) : the render method appends your html or react component into the root element (usually the div with an id of root in the index.html file in the public folder)
+
+
+
+INTRODUCTION TO JSX
+JSX is synthetic sugar. It is really JS under the hood but it allows us write HTML in our react/javascript without the need for createElement or appendChild(). JSX stands for Javascript and XML. It is translated to JS and HTML at runtime
+
+
+    const myJSX = <p>I love JSX</p>;    // with multiple lines of html, you have to wrap your JSX in parentheses
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(myJSX);
+
+
+
+    EXPRESSIONS IN JSX
+
+    To write expressions in JSX, you have to wrap them in curly braces {}. eg.
+
+    <h1> My favorite number is {10 - 2}</h1>
+
+
+
+    MULTI-LINE BLOCK OF HTML
+
+    Large blocks of HTML must be wrapped in parentheses and must have a parent element eg.
+
+        const myHTML = (
+            <div className='main'>  // parent element
+                <p>How are you doing?</p>
+                <p>This is a block of multi-line html</p>
+            </div>
+        )
+
+    In cases where you don't want to add an extra node to the DOM with the parent element, you can use an empty fragment <> </>
+
+        const myHTML = (
+            <>  // parent element
+                <p>How are you doing?</p>
+                <p>This is a block of multi-line html</p>
+            </>
+        )
+
+
+RESERVED WORDS:
+some traditional html words are reserved in javascript and as a result, JSX created alternatives. The two most common are class and the 'for' attribute in form labels
+
+
+    CLASS === CLASSNAME
+    class is a common attribute in HTML/CSS but since JSX is rendered in JavaScript and class is a reserved word in JS, we use className instead when writing JSX in react
+
+        const myElement = <h1 className='my-class'> Hello </h1>;
+
+    FOR === HTMLFOR
+    'for' in js is reserved for loops so when writing the for attribule of form labels, you have to use htmlFor instead
+
+    <form>
+        <label htmlFor='name'>Name</label>
+        <input type='text' name='name'/>
+    </form>
+
+
+
+
+DYNAMIC CONTENT
+While writing JSX, you can escape into pure javascript using curly braces {}.  Anything written within curly braces is treated as javascript. This lets you write functions and variables and all dynamic js content
+
+
+
+LISTS IN JSX
+Lists in JSX are similar to html lists only you must include a 'key' prop (attribute) with unique values on every list item as seen below
+
+    function App () {
+        const blogPost = {
+            title: 'Post Title',
+            body: 'This is the post body',
+            comments: [
+                {id: 1, text: 'comment one'},
+                {id: 2, text: 'comment two'},
+                {id: 3, text: 'comment three'}
+            ]
+        }
+
+        return (
+            <div className='container'>
+                <h1>{blogPost.title}</h1>
+                <p>{blogPost.body}</p>
+
+                <div className='comments'>
+                    <h3> Comments ({blogPost.comments.length})</h3>
+
+                    <ul>
+                        {blogPost.comments.map((comment, index) => <li key={index}>{comment.text}</li>)}
+                    </ul>
+                </div>
+            </div>
+        )
+    }
+
+
+
+CONDITIONALS (IF STATEMENTS)
+The only way to write conditionals in JSX is with ternary operators. React supports if statements and conditionals in general but you have to write them outside the JSX. 
+
+    let x = 5, text = 'GoodBye';
+    if (x < 10) {
+        text = 'Hello';
+    }
+
+    const myElement = <h1>{text}</h1>
+
+
+In the case of ternary operators, using the example from LISTS, we'll simulate turning off and on comments
+
+
+    function App () {
+        const blogPost = {
+            title: 'Post Title',
+            body: 'This is the post body',
+            comments: [
+                {id: 1, text: 'comment one'},
+                {id: 2, text: 'comment two'},
+                {id: 3, text: 'comment three'}
+            ]
+        }
+
+        let loading = false
+        let showComments = false
+
+        if (loading) return <h1>Loading...</h1>
+
+
+        return (
+            <div className='container'>
+                <h1>{blogPost.title}</h1>
+                <p>{blogPost.body}</p>
+
+                {showComments ? (
+                    <div className='comments'>
+                    <h3> Comments ({blogPost.comments.length})</h3>
+
+                    <ul>
+                        {blogPost.comments.map((comment, index) => <li key={index}>{comment.text}</li>)}
+                    </ul>
+                </div>
+                ) : ''}
+
+            </div>
+        )
+    }
+
+    NOTE: WITH TERNARY OPERATORS, IF YOU DON'T HAVE AN ELSE BLOCK YOU CAN USE '&&' INSTEAD OF '?' AND YOU DON'T NEED TO WRITE AN ELSE BLOCK
+
+        let x = 5
+
+        const myElement = <h1>{x < 10 && x}</h1>
+
+
+
+
+CREATING COMPONENTS IN REACT
+a good practice is to create a component folder in your source document for all your components. React component files can either have .js or .jsx extensions
+
+The structure of a react function component is as follows
+
+    function <Component Name> ([props]) {
+
+        [variables]
+
+        [functions]
+
+        return (
+            JSX
+        )
+    }
+
+    export default <Component Name>
+
+Note: optionally you can destructure the props object if you know the names of the items in it. i.e function <ComponentName>({propName, propName})
+
+
+PROPS
+props are optional data passed into components as they are called, they are then accessed on in the component itself. Props can not be updated.
+
+Optionally, You can also specify default props just like you would specify default values for arguments in functions in vanilla Javascript.
+
+You make these declarations after the component's function but before the export statement and the statements are like this
+
+    <Component Name>.defaultProps = {
+        propName: value
+    }
+
+
+    PROP TYPES
+    prop types are used to type-check your props. Basically to specify if they are to be strings or numbers or functions or objects e.t.c
+
+    you set prop types by first importing it into your components as follows
+
+        import PropTypes from 'prop-types'
+
+    Next you go above the export statement of the component and set the components prop types to an object of rules as follows
+
+    <ComponentName>.propTypes = {
+        <propName>: PropTypes.<type>,
+        <propName>: PropTypes.<type>.isRequired
+    }
+
+
+Here's an example a component using default props and prop types
+
+
+    import PropTypes from 'prop-types'
+
+    function Header(props) {    // you can use destructuring here if you know what props are passed in
+        return (
+            <header style={{ backgroundColor: 'red', color: 'blue' }}>
+                <div className="container">
+                    <h2>{props.text}</h2>
+                </div>
+            </header>
+        )
+    }
+
+    Header.defaultProps = {
+    text: 'Feedback UI'
+    }
+
+    Header.propTypes = {
+        text: PropTypes.string.isRequired
+    }
+
+    export default Header
+
+
+
+
+
+ADDING INLINE STYLES TO COMPONENTS IN REACT
+to add inline style to components, you use the style property and assign an object of styles to it. You end up with two curly braces around the styles, the outer one lets react know it's dynamic content, the other because it's an object. 
+
+The individual styles are the same as in CSS except for compound names which use camel casing in JSX instead of hyphen e.g background-color === backgroundColor
+
+    function Header(props) {
+        return (
+            <header style={{ backgroundColor: 'red', color: 'blue' }}>
+                <div className="container">
+                    <h2>{props.text}</h2>
+                </div>
+            </header>
+        )
+    }
+
+alternatively, you can create the style object outside the JSX and assign it to the style attribute
+
+    function Header(props) {
+        const headerStyles = {
+            backgroundColor: 'red', 
+            color: 'blue'
+        }
+
+        return (
+            <header style={headerStyles}>
+                <div className="container">
+                    <h2>{props.text}</h2>
+                </div>
+            </header>
+        )
+    }
+
+
+lastly, you can pass the style values in as props from the App and use them in the component
+
+
+
+
+
+
+STATE, USESTATE HOOK
+State is data storage. It lets you create dynamic apps by giving components the ability to hold, and update data... eg if a menu is open or close.
+
+There are 2 types of state, component level state and app level state. Example of component level state can be a navigation that has an open or close state. App level state is data that needs to be shared accross multiple components e.g feedback items that needs to be shared across components
+
+
+HOOKS
+Hooks are functions that provide a more concise and intuitive way to write reusable logic in React applications. Some inbuilt hooks are useState, useContext, useEffect
+
+
+You create state using the useState hook. first - import {useState} from 'react'
+
+then use it as follows
+
+
+const [<stateName>, <setStateName>] = useState(<initialValue>)
+
+
+this gives you the state, and the function to set/update that particular state
+
+
+Note: if you want to access the current value of your state so you can for example increment it, you have to use a call back function with the <setStateName> function
+
+    i.e setStateName((
+            <current>)=> {
+                return current + 1
+            }
+        )
+
+
+GLOBAL STATE:
+State can be global. You can create a seperate data file and import the state from that file into others or create the state in the parent component (or to the App component if you want it global) and pass it as props into it's children
+
+
+
+
+
+CUSTOM STYLE COMPONENTS & CONDITIONAL STYLING
+You can create custom components like html divs just for styling. This lets your wrap content in this component and it'll immediately have the style you set for it. An example can be a card
+
+    function Card ({children}) {
+
+        return (
+            <div className='card'>
+                {children}
+            </div>
+        )
+    }
+
+    export default Card
+
+
+you can then import this component into other components and use it
+
+
+For conditional styling, instead of adding a string value to className, you can escape into js using {} and use a ternary operator to check for your specified condition, then add the style if it's true
+
+
+
+
+
+EVENTS
+Event listeners in react are like inline event listeners in JS. You attach them to the component they are to be called from and they go off when the event happens. For example, take the button component below which has a click event attached to it and a corresponding callback function
+
+<Button onClick={handleClick} />
+
+
+
+PROP DRILLING
+It is a term used to describe when you pass a function from a component to one of it's children so that it can access some data in the child component e.g an id, and use it to run in the parent element where it is needed
+
+
+
+
+
+ROUTING: REACT ROUTER DOM
+Routing refers to the process of managing different URLs or routes within a single page application (SPA). React doesn't have routing capabilities but installing packages like react-router-dom enables routing
+    
+    npm install react-router-dom
+
+After installing it, import it into your App.js page (or the main page you're routing from). You can either import the {BrowserRouter} or {HashRouter}. BrowserRouter is preferred as it uses html5 browser history to manage routing while hash router uses # (id) e.g localhost:3000/#about
+
+    import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+
+after importing BrowserRouter as Router from 'react-router-dom', wrap everything in your return statements in App.js with  
+
+    <Router> </Router>
+
+    Then wrap every component that will be in different routes in 
+    <Routes> </Routes>
+
+    Next wrap components for each route in <Route [exact] path='/[path name]' element={<Components>}> </Route>.  
+
+    The <Route> tag can be self closing
+
+    Here is an example below
+
+
+
+        return (
+            <Router>
+                <Header />
+                <div className="container">
+                    <Routes>
+
+                        <Route exact path='/' element={
+                            <>
+                                <FeedbackForm handleAdd={addFeedback} />
+                                <FeedbackStats feedback={feedback} />
+                                <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
+                            </>
+                        }>
+
+                        </Route>
+                        <Route path='/about' element={<AboutPage />} />
+
+                    </Routes>
+
+                </div>
+            </Router>
+        )
+
+
+
+
+
+    LINKS
+    Internal links in react are best done with the Link component which can be imported from 'react-router-dom'. Unlink the a tag, Link doesn't reload the page and is super fast. 
+
+    You wrap the element you want to be a link as follows
+
+        <Link to='/[path name]'>
+            <element> || <component>
+        </Link>
+
+    Another option is
+
+        <Link to={{
+            pathname:'/[path name]',
+            search: '?name=john', 
+            hash: 'home'
+        }}>
+            <element>
+        </Link>
+
+
+        NAVLINKS & USEPARAMS
+        Navlinks are similar to Link except they can carry classes or styles for active links. They are purpose built for navigation. It is from the 'react-router-dom' as well and takes in the 'to' prop just like Link
+
+        The key difference is it has a class prop called activeClassName which you can style so anytime that link is clicked and you're on its route, the link gets styled 
+
+            import {NavLink} from 'react-router-dom'
+
+            <NavLink to='/' activeClassName='active'>Home</NavLink>
+            <NavLink to='/about' activeClassName='active'>Home</NavLink>
+
+
+
+    Params in links are strings (data) sent or received over urls. You can catch this data with useParams which you'll import on the sending page (App.js) and the receiving page (The page where you're catching the data) and process it by attaching /:<data name> at the end of the route path
+
+        import {useParams} from 'react-router-dom'
+
+
+        <Route path='/post/:<variableName>' element={<PostPage />} />
+
+    On the receiving component, create an object from useParams to get access to the data
+        const params = useParams()
+
+    You can access the data as shown below
+        params.<variableName>
+
+    A use case is a blog, say you wanted to pass the id of posts in the URL. You can catch it with useParams and search the database of posts for the exact blog post to display on the PostPage
+
+
+
+    NAVIGATE & NESTED ROUTES
+    The navigate component is part of 'react-router-dom' and it is used to redirect.
+
+        import {Navigate, useNavigate} from 'react-router-dom'
+
+        if (status === 404) {
+            return <Navigate to='/notfound' />
+        }
+
+        OR
+
+        const navigate = useNavigate()
+
+        <button onClick=handleClick>
+            Redirect
+        </button>
+
+        const handleClick = () => {
+            console.log('Hello')
+            navigate('/about')
+        }
+
+
+
+
+    NESTED ROUTES 
+    Nested routes allow you create more complex routing structures. By defining child routes, you get to create heirarchical structure of routes that correspond to the structure of your application's components
+
+        By adding an * (catch everything) at the end of the parent path you can define child paths that show different or additional information on that page
+
+        PARENT - written in App.js
+        <Route path='/posts/*' element={<h1>Parent Element</h1>} />
+
+        CHILD - written in Posts.jsx as /show instead of /posts/show
+        <Route path='/show' element={<h2>Child Element</h2>}
+
+    In the example above, the child element will display when you go to /posts/show
+
+
+
+
+
+
+CONTEXT API
+An alternative and better way to pass data across components without using props to manually pass it down the component tree.
+
+Context is primarily for when data needs to be accessed across multiple components at different levels of th component tree. Instead of passing data through each intermediate component as props, you can define the data once at a higher level and make it accessible to any component in the tree that needs it.
+
+
+    CREATING A CONTEXT
+
+        import {createContext} provided by React. 
+
+        const <ContextName> = createContext()
+
+    This returns an object that contains the Provider component. The Provider component is used to define the data that will be shared, and the Consumer component is used to access that data
+
+       
+
+
+    PROVIDING DATA: 
+    To make data accessible to child components, wrap the relevant portion of the component tree with the 'Provider' component and pass the data as a prop to the 'Provider'
+
+        export const ContextNameProvider = ({children}) => {
+            const data = useState({
+                name: 'John Mayer',
+                age: 36
+            })
+            
+            return <ContextName.Provider 
+                value={{
+                    data: data,
+                function1: function1
+                }}
+            >
+                {children}
+            </ContextName.Provider>
+        }
+
+        export default FeedbackContext
+
+
+    CONSUMING DATA:
+    Components that need to access the shared data can use the useContext hook. First import the 'Provider' into the App.js and wrap all the components in the return statement of your function component with the Provider
+
+        import {ComponentNameProvider} from './context/ComponentNameContext'
+
+        return (
+            <ComponentNameProvider>
+                <All Components>
+            </ComponentNameProvider>
+        )
+
+
+    After doing this, you can now go to each component and access the data there by doing the following
+
+        import {useContext} from 'react'
+        import ComponentNameContext from './context/ComponentNameContext'
+
+    Then in the component's function, destructure the data as follows
+
+        const {dataName} = useContext(ComponentNameContext)
+
+    That data is now available for use
+
+
+
+
+
+
+USE EFFECT - useEffect
+useEffect is a built-in hook in React that allows you perfom side effects in functional components. i.e triggering an action when something happens. Side effects can include fetching data from an API, subscribing to events, etc
+
+The 'useEffect' hook accepts two parameters: a callback function that is called when the trigger goes off, and an optional array of dependencies (components or elements to watch for the trigger). If the array is empty, the function will be called once when the page loads
+
+    import {useEffect} from 'react'
+
+    function ComponentName() {
+
+        useEffect(()=>{
+            // Side effect function that will run when trigger goes off
+        }, [array of dependencies || empty array if we want the function to run once on load])
+    }
+
+
+
+
+
+
+BACKEND INTERFACING
+React is a frontend library so all the data is stored (hard-coded) on the client (browser). To build a fullstack application, you need to connect your React app to a backend server using an API.
+
+The data will be stored in a database server using MySQL, MongoDB etc. Your application will fetch and interact with this data using an API (which can be written in any language like node.js, python, php etc) and typically use a backend framework such as Express, Django, Laravel etc 
+
+The API will return the data in JSON format
+
+When you create this API, it'll have special URL's(endpoints) which you can hit using the built in Fetch API or you can use a HTTP client like Axios 
+
+You fetch the data into your application most likely through your context API which manages your global state and from there you can feed the components that need it
+
+
+
+
+Usually your backend API will be a REST (Representation State Transfer) API: a specific architecture style used for client server communication
+
+When you make requests from the client to the server, we use specific HTTP methods for certain tasks
+
+GET
+Retrieves data from a server
+ENDPOINTS: /feedback OR /feedback/1
+
+Post
+Submits data to the server
+ENDPOINT: /feedback
+
+PUT/PATCH
+Update data already on the server
+ENDPOINT: /feedback/1
+
+DELETE
+Delete data from the server
+ENDPOINT: /feedback/1
+
+
+
+HTTP STATUS CODES
+
+1xx: Informational
+Request received/processing
+
+2xx: Success
+Successfully received
+
+3xx: Redirect
+Further action must be taken/redirect
+
+4xx: Client Side Error
+Request does not have everything it needs e.g missing a required email address
+
+5xx: Server Side Error
+Server failed to fulfill a valid request e.g a bug on the server side code
+
+
+
+ADDING A PROXY IN REACT
+You can add a proxy to your package.json file by adding this line
+    "proxy": "http://localhost:<port>"
+
+When you deploy the app you'll have to change the proxy to the URL, but by specifying a proxy, you no longer need to right 'http://localhost:5000' anywhere. you can just write '/about' and react will translate it to 'http://localhost:5000/about'
+
+
+
+
+
+REDUCERS
+Reducers are used to better manage state in a react application. In essence, it is a function which takes two arguments - the current state and an action - and returns a new state. i.e 
+
+    (state, action) => newState
+E.G
+    function counterReducer(state, action) { return state + 1 }
+
+
+    THE ACTION
+    It is defined as an object with a type property.Based on the type of the action, the reducer can perform conditional state transitions.
+
+        const counterReducer = (count, action) => {
+            if (action.type === 'INCREASE') {
+                return count + 1
+            }
+
+            if (action.type === 'DECREASE') {
+                return count - 1
+            }
+
+            return count
+        }
+
+if the action type doesn't match any of the conditions, we return the unchanged state.
+
+A reducer is a pure function with no side effects i.e with the same state and action, you'll always get the same result 
+
+
+It is common practice to use switch statements instead of if-else statements with reducers
+
+    const counterReducer = (count, action) => {
+        switch (action.type) {
+            case 'INCREASE':
+                return count + 1;
+            case 'DECREASE':
+                return count - 1;
+            default:
+                return count;
+        }
+    }
+
+
+    TWO IMPORTANT THINGS TO NOTE
+    1. The state processed by a reducer is immutable. This means the incoming state is never directly changed. Therefore the reducer function always has to return a new state object.
+
+    2. Since we know the state is an immutable data structure, we can use the javascript spread operator to create a new state object from the incoming state and the part we want changed
+
+
+
+    HOW TO USE REDUCERS IN REACT
+    - First create a reducer page e.g GithubReducer.js
+    - Next write your reducer function, example below
+        
+        const githubReducer = (state, action) => {
+
+            switch (action.type) {
+                case 'GET_USERS':
+                    return {
+                        ...state,
+                        users: action.payload,
+                        loading: false
+                    }
+                default:
+                    return state
+            }
+        }
+
+        export default githubReducer
+
+    
+    - On your <Context> page where you're deploying it
+    
+        import {useReducer} from 'react'
+        import <githubReducer> from './<file location>'
+
+
+
+    Within the Provider function, create the initial state
+
+        const initialState = {
+            users: [],
+            loading: true
+        }
+
+    Next use the useReducer function and destructure it to get the state and dispatch function (think of the setUser function with state... it's kinda like that but it's used to dispatch the action to the reducer function)
+
+        const [state, dispatch] = useReducer(githubReducer, initialState)
+
+    Next, dispatch the action to the reducer function
+
+        dispatch({
+            type: 'GET_USERS',
+            payload: data
+        })
+
+    Lastly, in the <ContextName.Provider> return statement update the values prop with the functions and variables you want to pass into the context provider
+
+        return <GithubContext.Provider value={{
+            users: state.users,     //formerly just users when we were using useState
+            loading: state.loading,
+            fetchUsers
+        }}>
+            {children}
+        </GithubContext.Provider>
+
+
+
+
+
+USEREF HOOK
+The useRef hook lets you add a reference to a DOM element (sort of like a marker). This means you can always access that element and it's value. Two good things about useRef are - it is a mutable reference i.e you can change the value and it persists across re-renders of a component (making it a good alternative to useState in specific cases)
+
+    import {useRef} from 'react'
+
+    function UseRefExample() {
+
+        const myRef = useRef()
+
+        console.log(myRef.current.value)
+
+        return <h1 ref={myRef}>Hello</h1>
+    }
+
+useRef returns an object with a single property called current and it's initial value is undefined. Modifying the property and it's value will not trigger a re-render of the component
+
+Some use cases for useRef are, to mark and access a DOM element
+
+
+
+
+
+USEMEMO
+Not a commonly used hook and should only be used when experiencing performance issues as there are consequences to using it.
+
+Memoization is a an optimization technique that speeds up performance by caching the result of an expensive and frequently called function, preventing unnecessary recalculations. For example if your function queries a large database often 
+
+useMemo hook is called and assigned to a variable. It takes two arguments: a callback function where the expensive function is called and an array of triggers. If any of the triggers change value, the function is called again, else you keep getting the cached result. If the array is empty, the function is called just once at load time
+
+
+    import {useMemo, useState} from 'react'
+
+    const MyComponent = () => {
+        const [count, setCount] = useState(0);
+
+        const doubledValue = useMemo(() => {
+            // Simulate an expensive computation
+            console.log('Calculating...');
+            return count * 2;
+        }, [count]);
+
+        return (
+            <div>
+            <p>Count: {count}</p>
+            <p>Doubled Value: {doubledValue}</p>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
+            </div>
+        );
+    };
+
+In this example, the doubledValue is memoized using useMemo. It depends on the count state variable, so whenever count changes, the doubledValue will be recalculated. If count remains the same, the memoized value will be retrieved from the cache, avoiding the expensive computation.
+
+The useMemo hook is particularly useful when you have computationally intensive operations, such as complex calculations, filtering, or sorting large datasets. By memoizing the results, you can optimize performance by avoiding unnecessary recalculations and re-rendering.
+
+
+
+
+
+USECALLBACK (useCallback)
+
+useCallback is similar to useMemo. It is a performance hook. Unlike useMemo which memoizes the value of an expensive function, it memoizes a function that returns a definite result, so that components that rely on the callback function only call it again when there is a change to the function or one of it's dependencies. The structure is as follows
+
+    import React, {useCallback} from 'react';
+
+    const memoizedCallback = useCallback(()=>{
+        // function body
+    }, [dependencyArray])
+
+    return <Button onClick={memoizedCallback} />
+
+
+useCallback takes two arguments: the function you want to memoize and an optional dependency array. It returns a memoized function which you can use as a callback. 
+
+The dependency array can also hold the function itself so if any change is made to the function, it'll trigger a re-run. If the function has other dependencies, a change to any of them will trigger a re-run. if empty, the callback function will only be created once
+
+    import React, { useCallback, useState } from 'react';
+
+    const MyComponent = () => {
+        const [count, setCount] = useState(0);
+
+        const handleClick = useCallback(() => {
+            console.log('Button clicked');
+            setCount(count + 1);
+        }, [count]);
+
+        return (
+            <div>
+            <p>Count: {count}</p>
+            <button onClick={handleClick}>Increment</button>
+            </div>
+        );
+    };
+
+
