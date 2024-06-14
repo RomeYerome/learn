@@ -2,6 +2,16 @@
 
 // pushing changes to a remote means that you are sending the changes from your local repository to the remote repository. You can push changes to a remote with the following command:
 
+
+
+`FIRST YOU ADD THE REMOTE REPOSITORY`;
+
+`git remote add remote-name remote-url`;   // adds a remote repository to your local repository. The remote-name is a name you choose to identify the remote repository, and the remote-url is the URL of the remote repository. You can use this name to refer to the remote repository in other git commands.
+
+
+`git remote -v`;   // lists all the remote repositories that are associated with your local repository.
+
+
 `git push remote-name branch-name`;  // pushes commits to the specified branch in the specified remote
 
 

@@ -1,6 +1,6 @@
 `WEBPACK BASIC SETUP`;
 
-// First, you'll need to create a root folder for your project and in that, create a src folder for your source files, and create a dist folder for your production files. In the src folder, create an index.js file and in the dist folder, create an index.html file and write boiler plate html in it. See example below
+// First, you'll need to create a root folder for your project and in that, create a src folder for your source files, and create a dist folder for your production files. In the src folder, create an index.js file and in the dist folder, create an index.html file and write boiler plate html in it. See file structure below
 
 // Root Folder
 //   src/
@@ -8,8 +8,11 @@
 //   dist/
 //     index.html
 
-// Next, you'll need to install webpack and webpack-cli as Dev Dependencies. Run the command below in your terminal to install them
 
+`Initialize npm and install webpack`;
+// Next, you'll need to initialize npm (if you haven't already) and install webpack and webpack-cli as Dev Dependencies. Run the command below in your terminal to install them
+
+`npm init -y`;    // This will create a package.json file in your project
 `npm install webpack webpack-cli --save-dev`;
 
 // This will install webpack and webpack-cli as Dev Dependencies in your project. You can now run webpack commands in your terminal. It will also create your package.json file if you don't have one already and add webpack and webpack-cli as Dev Dependencies. 
@@ -30,12 +33,16 @@
 
 
 
+
+
+
+
 `WEBPACK CONFIGURATION`;
 // In Webpack 5, they made it so you don't need a config file and just running the code above will produce your dist folder with the main.js file. However, you can create a webpack.config.js file to configure webpack. This file should be in the root of your project. You can specify the entry file, output file, and other configurations in this file. 
 
 // Webpack runs with common JS syntax so you can use module.exports to export your configuration. See example below
 
-// To configure webpack, Create a webpack.config.js file i. This file should be in the root of your project. You can specify the entry file, output file, and other configurations in this file. See example below
+// To configure webpack, Create a webpack.config.js file. This file should be in the root of your project. You can specify the entry file, output file, and other configurations in this file. See example below
 
 const path = require('path');   // This is a Node.js module that provides utilities for working with file and directory paths
 
