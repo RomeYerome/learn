@@ -8,7 +8,8 @@
 /react/github-finder/.gitignore
 /react/github-finder/.git
 /react/github-finder/node_modules
-/js-vanilla/randomideas-api
+/js-vanilla/projects/randomideas-api
+/express/sandbox/node_modules
 
 
 # misc

@@ -6,7 +6,7 @@
 `INSTALLING EXPRESS`;
 // After installing Node.js, and initializing npm, you can install Express by running the following command in your terminal:
 
-`npm install express --save`; // OR `npm i express`
+`npm install express`; // OR `npm i express`
 
 
 
