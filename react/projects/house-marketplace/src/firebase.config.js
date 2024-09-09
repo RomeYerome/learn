@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCsPUTty744DZd6REcBJ2diKsr-biJ6gOE",
+    apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     authDomain: "housing-market-966bb.firebaseapp.com",
     projectId: "housing-market-966bb",
     storageBucket: "housing-market-966bb.appspot.com",
-    messagingSenderId: "57644049944",
-    appId: "1:57644049944:web:28343944aba1a1aa65c56d"
+    messagingSenderId: REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
